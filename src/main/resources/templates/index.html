@@ -1,10 +1,56 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>码匠社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+
+<div class="bs-docs-example">
+    <div class="navbar navbar-inverse" style="position: static;">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">码匠社区</a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">首页</a></li>
+                        <li class="active">
+                            <form class="navbar-form pull-left " action="">
+                                <input type="text" class="search-query span2" placeholder="搜索信息">
+                                <button type="submit" class="btn " >搜索</button>
+                            </form>
+                        </li>
+
+                    </ul>
+
+                    <ul class="nav pull-right">
+                        <li class="dropdown" th:if="${session.user!=null}">
+                            <a href="#demo" class="dropdown-toggle" data-toggle="collapse"  >我<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li id="demo"  class="collapse in"><a href="#">我的资料</a></li>
+                                <li id="demo"><a href="#">我的消息</a></li>
+                                <li id="demo"><a href="#">退出登录</a></li>
+
+                            </ul>
+                        </li>
+                        <li th:if="${session.user==null}"><a href="https://github.com/login/oauth/authorize?client_id=207b9665689eb67d2893&redirect_uri=http://localhost:8087/callback&scope=user&state=1">登录</a></li>
+                        <li class="divider-vertical"></li>
+
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div>
+        </div><!-- /navbar-inner -->
+    </div><!-- /navbar -->
+</div>
+
 </body>
 </html>
